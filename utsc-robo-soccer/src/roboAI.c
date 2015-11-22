@@ -503,6 +503,9 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
 
     switch(ai->st.state) {
       case 101  :
+      	x_distance = abs((ai->st.ball->cx)-(ai->st.self->cx));
+      	y_distance = abs((ai->st.ball->cy)-(ai->st.self->cy));
+      	fprintf(stderr, "x:%f y:%f\n",x_distance, y_distance);
         fprintf(stderr, "state101\n");
         ai->st.state +=1;
         break;
