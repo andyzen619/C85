@@ -1,0 +1,11 @@
+Heading:
+ The direction in which you are navigating in.
+
+Direction:
+ The direction you are facing.
+
+C programming:
+ Pointers:
+  -&variable_name: memory address of the variable.
+  -*pointer_name : declare pointer with name pointer_name. If        	pointer_name is defined already, then this is the value at the   address stored in pointer_name
+  -pointer_name: address stored at pointer.
