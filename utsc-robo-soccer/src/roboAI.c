@@ -506,7 +506,7 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
       case 101  :
       	x_distance = (ai->st.ball->cx)-(ai->st.self->cx);
       	y_distance = (ai->st.ball->cy)-(ai->st.self->cy);
-      	distance = ((pow(x_distance,2)) + (pow(y_distance, 2)));
+      	distance = sqrt((pow(x_distance,2)) + (pow(y_distance, 2)));
       	fprintf(stderr, "distance is %f\n",distance);
         fprintf(stderr, "state101\n");
         ai->st.state +=1;
