@@ -459,6 +459,7 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
  **************************************************************************/
  double x_distance;
  double y_distance;
+ double distance;
 
  if (ai->st.state==0||ai->st.state==100||ai->st.state==200)  	// Initial set up - find own, ball, and opponent blobs
  {
