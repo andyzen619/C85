@@ -516,7 +516,7 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
         fprintf(stderr, "state101\n");
         if(distance <= 50) {
         kick();
-        kicker_stop();
+        stop_kicker();
         ai->st.state +=1;
         break;
         }
