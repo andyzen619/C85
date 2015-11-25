@@ -564,5 +564,11 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
  You will lose marks if AI_main() is cluttered with code that doesn't belong
  there.
 **********************************************************************************/
+double magnitude(double x, double y) {
+  return sqrt(pow(x,2)+(pow(y,2)));
+}
 
+double angleOfTwo(double x1, double y1, double x2, double y2) {
+  return fmod(atan2(x1*y2-x2*y1,x1*x2+y1*y2), 2*pi);
+}
 
