@@ -461,6 +461,7 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
  double y_distance;
  double distance;
  double theta;
+ double counter = 6.2831; 
 
  if (ai->st.state==0||ai->st.state==100||ai->st.state==200)  	// Initial set up - find own, ball, and opponent blobs
  {
@@ -504,7 +505,7 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
     //fprintf(stderr,"state is %i \n", ai->st.state);
 
     switch(ai->st.state) {
-      case 101  :
+      case 101  : // turning to face the ball
       	x_distance = fabs((ai->st.ball->cx)-(ai->st.self->cx));
       	y_distance = fabs((ai->st.ball->cy)-(ai->st.self->cy));
       	distance = sqrt((pow(x_distance,2)) + (pow(y_distance, 2)));
@@ -513,14 +514,22 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
         fprintf(stderr, "x:%f, y:%f", x_distance, y_distance);
       	fprintf(stderr, " distance is %f\n",distance);
         fprintf(stderr, "state101\n");
-        }
+        if(distance <= 50) {
         ai->st.state +=1;
         break;
-      case 102  :
+        }
+        else {
+          while(counter>= 0) {
+            pivot_right(50);
+            all_stop();
+            counter -= .5;
+          }
+        }
+      case 102  : //moving towards ball
         fprintf(stderr, "state102\n");
         ai->st.state +=1;
         break;
-      case 103  :
+      case 103  : //
         fprintf(stderr, "state103\n");
         ai->st.state +=1;
         break;
