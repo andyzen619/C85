@@ -132,24 +132,11 @@ void clear_motion_flags(struct RoboAI *ai);
    Add headers for your own functions implementing the bot's soccer
    playing functionality below.
 *****************************************************************************/
-//int (* state[])(void) = { standing, moving, pickedUpBall, goToGoal, kick, celebrate};
-//enum state_codes { 1, 2, 3, 4, 5, 6};
-//enum ret_codes {pass, repeat};
-//struct transition {
-//	enum state_codes src_state;
-//	enum ret_codes	 ret_cdes;
-//	enum state_codes dst_state;
-//}
-//struct transition state_transitions[] = {
-//	{1, pass, 2},
-//	{1, repeat, 1},
-//	{2, pass, 3},
-//	{2, repeat, 2},
-//	{3, pass, 4},
-//	{3, repeat, 3},
-//	{4, pass, 5},
-//	{4, repeat, 4},
-//	{5, pass, 6},
-//	{5, repeat, 5};
-//}
+double magnitude(double x, double y) {
+	return sqrt(pow(x,2)+(pow(y,2)));
+}
+
+double angle(double x1, double y1, double x2, double y2) {
+	return mod(atan2(x1*y2-x2*y1,x1*x2+y1*y2),2*pi);
+}
 #endif

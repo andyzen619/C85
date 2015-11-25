@@ -508,6 +508,8 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
       	x_distance = fabs((ai->st.ball->cx)-(ai->st.self->cx));
       	y_distance = fabs((ai->st.ball->cy)-(ai->st.self->cy));
       	distance = sqrt((pow(x_distance,2)) + (pow(y_distance, 2)));
+        theta = angle(ai->st.ball->cx, ai->st.ball->cy, ai->st.self->cx, ai->st.self->cy);
+        fprintf(stderr, "%f\n", theta);
         fprintf(stderr, "x:%f, y:%f", x_distance, y_distance);
       	fprintf(stderr, " distance is %f\n",distance);
         fprintf(stderr, "state101\n");
