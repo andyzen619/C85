@@ -514,17 +514,12 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
         fprintf(stderr, "x:%f, y:%f", x_distance, y_distance);
       	fprintf(stderr, " distance is %f\n",distance);
         fprintf(stderr, "state101\n");
-        if(distance <= 50) {
+        if(distance <= 200) {
         kick();
-        stop_kicker();
         ai->st.state +=1;
         break;
         }
         else {
-          while(counter>= 0) {
-            pivot_right(50);
-            all_stop();
-            counter -= .5;
           }
         }
       case 102  : //moving towards ball
