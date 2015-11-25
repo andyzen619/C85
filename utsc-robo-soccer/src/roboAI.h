@@ -132,6 +132,8 @@ void clear_motion_flags(struct RoboAI *ai);
    Add headers for your own functions implementing the bot's soccer
    playing functionality below.
 *****************************************************************************/
+
+#define pi 3.14159265
 double magnitude(double x, double y) {
 	return sqrt(pow(x,2)+(pow(y,2)));
 }
