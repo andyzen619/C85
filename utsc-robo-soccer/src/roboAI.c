@@ -520,6 +520,10 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
         break;
         }
         else {
+          while(counter>= 0) {
+            pivot_right(50);
+            all_stop();
+            counter -= .5;
           }
         }
       case 102  : //moving towards ball
