@@ -138,7 +138,7 @@ double magnitude(double x, double y) {
 	return sqrt(pow(x,2)+(pow(y,2)));
 }
 
-double angle(double x1, double y1, double x2, double y2) {
+double angleOfTwo(double x1, double y1, double x2, double y2) {
 	return fmod(atan2(x1*y2-x2*y1,x1*x2+y1*y2), 2*pi);
 }
 #endif
