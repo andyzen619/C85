@@ -509,10 +509,9 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
       	y_distance = (ai->st.ball->cy)-(ai->st.self->cy);
       	distance = sqrt((pow(x_distance,2)) + (pow(y_distance, 2)));
         fprintf(stderr, "x:%f, y:%f", x_distance, y_distance);
-      	fprintf(stderr, "distance is %f\n",distance);
+      	fprintf(stderr, " distance is %f\n",distance);
         fprintf(stderr, "state101\n");
-        kick();
-        stop_kicker();
+        kick(50);
         if(distance <= 50) {
           kick();
           stop_kicker();
