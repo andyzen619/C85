@@ -139,6 +139,6 @@ double magnitude(double x, double y) {
 }
 
 double angle(double x1, double y1, double x2, double y2) {
-	return modf(atan2(x1*y2-x2*y1,x1*x2+y1*y2),(2*pi)*);
+	return modf(atan2(x1*y2-x2*y1,x1*x2+y1*y2),&(2*pi));
 }
 #endif
