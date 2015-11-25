@@ -134,4 +134,5 @@ void clear_motion_flags(struct RoboAI *ai);
 *****************************************************************************/
 
 #define pi 3.14159265
+double angleOfTwo(double x1, double y1, double x2, double y2);
 #endif
