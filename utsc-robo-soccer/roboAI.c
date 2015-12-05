@@ -497,7 +497,7 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
   //track_agents(ai,blobs);		// Currently, does nothing but endlessly track
 
   if(ai->st.state >= 101 && ai->st.state < 200){
-    x_distance = abs(ai->st.ball->cx - ai->st.self->cx);
+    x_distance = averageX(ai);
     y_distance = abs(ai->st.ball->cy - ai->st.self->cy);
     while(x_distance > 10) {
       
@@ -553,5 +553,30 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
  You will lose marks if AI_main() is cluttered with code that doesn't belong
  there.
 **********************************************************************************/
+
+double averageX(ai){
+  // initialize variables
+  double xTemp, xTemp1, xTemp2, xSum;
+  int count, divisor;
+  count = 10;
+  divisor = 10;
+
+  xSum = abs(ai->st.ball->cx - ai->st.self->cx);
+
+  while (count > 0) {
+    xTemp1 = abs(ai->st.ball->cx - ai->st.self->cx);
+    xTemp2 = abs(ai->st.ball->cx - ai->st.self->cx);
+    xTemp = (xTemp1 + xTemp2)/2;
+    xSum += xTemp;
+    if (abs(xSum - xTemp) > 10) {
+      count +=1
+      divisor +=1
+    } else {
+      count -=1
+    }
+  }
+
+  return xSum / divisor;
+}
 
 
