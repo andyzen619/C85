@@ -497,7 +497,7 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
   //track_agents(ai,blobs);		// Currently, does nothing but endlessly track
 
   if(ai->st.state >= 101 && ai->st.state < 200){
-    x_distance = averageX(ai);
+    x_distance = medianFilter(ai);
     y_distance = abs(ai->st.ball->cy - ai->st.self->cy);
     while(x_distance > 10) {
       
@@ -511,6 +511,15 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
 
     switch(ai->st.state) {
       case 101  :
+        x_distance = medianFilter(ai);
+        y_distance = abs(ai->st.ball->cy - ai->st.self->cy);
+        while(x_distance > 10) {
+          
+          drive_speed(50);
+          x_distance -= 45;
+          all_stop();
+          fprintf(stderr,"distance is: %f \n", x_distance);
+        }      
         fprintf(stderr, "state101");
         ai->st.state +=1;
         break;
@@ -554,29 +563,28 @@ void AI_main(struct RoboAI *ai, struct blob *blobs, void *state)
  there.
 **********************************************************************************/
 
-double averageX(ai){
-  // initialize variables
-  double xTemp, xTemp1, xTemp2, xSum;
-  int count, divisor;
-  count = 10;
-  divisor = 10;
+//SOURCE: http://stackoverflow.com/questions/3893937/c-array-sorting-tips
+int compare( const void* a, const void* b)
+{
+     int int_a = * ( (int*) a );
+     int int_b = * ( (int*) b );
 
-  xSum = abs(ai->st.ball->cx - ai->st.self->cx);
+     if ( int_a == int_b ) return 0;
+     else if ( int_a < int_b ) return -1;
+     else return 1;
+}
 
-  while (count > 0) {
-    xTemp1 = abs(ai->st.ball->cx - ai->st.self->cx);
-    xTemp2 = abs(ai->st.ball->cx - ai->st.self->cx);
-    xTemp = (xTemp1 + xTemp2)/2;
-    xSum += xTemp;
-    if (abs(xSum - xTemp) > 10) {
-      count +=1
-      divisor +=1
-    } else {
-      count -=1
-    }
+double medianFilter(struct RoboAI *ai) {
+  double median;
+  double arr[10];
+  int i;
+
+  for (i=0; i<10; i++) {
+    arr[i]=abs(ai->st.ball->cx - ai->st.self->cx);
   }
 
-  return xSum / divisor;
+  median = qsort(arr, 10, sizeof(double), compare);
+  return median;
 }
 
 
